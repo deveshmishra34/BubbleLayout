@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-bubblelayout" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>BubbleLayout</name>
+
+    <js-module name="BubbleLayout" src="www/BubbleLayout.js">
+        <clobbers target="BubbleLayout" />
+    </js-module>
+    
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="BubbleLayout">
+                <param name="android-package" value="cordova.plugin.bubblelayout.BubbleLayout" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/BubbleLayout.java" target-dir="src/cordova/plugin/bubblelayout/BubbleLayout" />
+    </platform>
+
+</plugin>
