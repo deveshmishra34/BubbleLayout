@@ -1,17 +1,19 @@
 {
-  "name": "cordova-plugin-bubblelayout",
+  "name": "bubblelayout",
   "version": "1.0.0",
-  "description": "",
-  "cordova": {
-    "id": "cordova-plugin-bubblelayout",
-    "platforms": [
-      "android"
-    ]
+  "description": "This is is bubble layout cordova plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "ecosystem:cordova",
-    "cordova-android"
-  ],
-  "author": "Devesh mishra",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deveshmishra34/BubbleLayout.git"
+  },
+  "author": "Devesh Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deveshmishra34/BubbleLayout/issues"
+  },
+  "homepage": "https://github.com/deveshmishra34/BubbleLayout#readme"
 }
