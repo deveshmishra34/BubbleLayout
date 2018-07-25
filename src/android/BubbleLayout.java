@@ -21,11 +21,14 @@ public class BubbleLayout extends CordovaPlugin {
         }else if (action.equals("subtract")) {
             this.subtract(args, callbackContext);
             return true;
+        }else if (action.equals("showBubbleHead")) {
+            this.subtract(args, callbackContext);
+            return true;
         }
         return false;
     }
 
-    private void shpwBubbleHead(JSONArray args, CallbackContext callbackContext){
+    private void showBubbleHead(JSONArray args, CallbackContext callbackContext){
         if(args != null){
             try{
                 cordova.getThreadPool().execute(new Runnable() {
