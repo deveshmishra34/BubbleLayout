@@ -6,6 +6,7 @@ import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import in.dcreators.bubblehead.*;
 
 /**
  * This class echoes a string called from JavaScript.
@@ -24,7 +25,21 @@ public class BubbleLayout extends CordovaPlugin {
         return false;
     }
 
-    
+    private void shpwBubbleHead(JSONArray args, CallbackContext callbackContext){
+        if(args != null){
+            try{
+                cordova.getThreadPool().execute(new Runnable() {
+                    public void run() {
+                        startService(new Intent(that.cordova.getActivity().getApplicationContext().getPackageName(), FloatingViewService.class));
+                    }
+                });
+            }catch(Exception e){
+                callbackContext.error("Something went wrong"+ e);
+            }
+        }else{
+            callbackContext.error("Please pass values");
+        }
+    }
 
     private void add(JSONArray args, CallbackContext callbackContext){
         if(args != null){
