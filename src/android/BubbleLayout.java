@@ -6,6 +6,8 @@ import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.content.Intent;
+
 import in.dcreators.bubblehead.*;
 
 /**
@@ -30,10 +32,12 @@ public class BubbleLayout extends CordovaPlugin {
 
     private void showBubbleHead(JSONArray args, CallbackContext callbackContext){
         if(args != null){
+            final CordovaPlugin that = this;
             try{
                 cordova.getThreadPool().execute(new Runnable() {
                     public void run() {
-                        startService(new Intent(that.cordova.getActivity().getApplicationContext().getPackageName(), FloatingViewService.class));
+                        Intent intent = new Intent(that.cordova.getActivity().getBaseContext(), FloatingViewService.class);
+                        that.cordova.startService(intent);
                     }
                 });
             }catch(Exception e){
