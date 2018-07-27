@@ -36,8 +36,8 @@ public class BubbleLayout extends CordovaPlugin {
             try{
                 cordova.getThreadPool().execute(new Runnable() {
                     public void run() {
-                        Intent intent = new Intent(that.cordova.getActivity().getBaseContext(), FloatingViewService.class);
-                        that.cordova.startService(intent);
+                        Intent intent = new Intent(that.cordova.getActivity().getBaseContext(), BubbleHead.class);
+                        that.cordova.getActivity().startActivity(intent);
                     }
                 });
             }catch(Exception e){
