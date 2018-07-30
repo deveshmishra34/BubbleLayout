@@ -2,18 +2,27 @@ package cordova.plugin.bubblelayout;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CordovaInterface;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.content.Intent;
 
-import in.dcreators.bubblehead.*;
+import android.content.Intent;
+import android.content.Context;
+
+import in.dcreators.bubblehead.BubbleHead;
+import in.dcreators.bubblehead.FloatingViewService;
 
 /**
  * This class echoes a string called from JavaScript.
  */
 public class BubbleLayout extends CordovaPlugin {
+
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+    }
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -24,7 +33,7 @@ public class BubbleLayout extends CordovaPlugin {
             this.subtract(args, callbackContext);
             return true;
         }else if (action.equals("showBubbleHead")) {
-            this.subtract(args, callbackContext);
+            this.showBubbleHead(args, callbackContext);
             return true;
         }
         return false;
@@ -32,17 +41,10 @@ public class BubbleLayout extends CordovaPlugin {
 
     private void showBubbleHead(JSONArray args, CallbackContext callbackContext){
         if(args != null){
-            final CordovaPlugin that = this;
-            try{
-                cordova.getThreadPool().execute(new Runnable() {
-                    public void run() {
-                        Intent intent = new Intent(that.cordova.getActivity().getBaseContext(), BubbleHead.class);
-                        that.cordova.getActivity().startActivity(intent);
-                    }
-                });
-            }catch(Exception e){
-                callbackContext.error("Something went wrong"+ e);
-            }
+            Context context = cordova.getActivity().getApplicationContext();
+            callbackContext.success("Reach");
+            Intent intent = new Intent(context, BubbleHead.class);
+            cordova.getActivity().startActivity(intent);
         }else{
             callbackContext.error("Please pass values");
         }

@@ -16,6 +16,11 @@
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <activity android:label="Bubble Head Activity" android:name="in.dcreators.bubblehead.BubbleHead"/>
+        </config-file>
+
         <source-file src="src/android/BubbleLayout.java" target-dir="src/cordova/plugin/bubblelayout/BubbleLayout" />
     </platform>
 
