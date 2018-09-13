@@ -7,21 +7,24 @@
     </js-module>
     
     <platform name="android">
+
+        <source-file src="src/android/BubbleLayout.java" target-dir="src/cordova/plugin/bubblelayout/BubbleLayout" />
+
         <framework src="src/android/bubblelayout.gradle" custom="true" type="gradleReference" />
-        <resource-file src="libs/bubblehead-debug.aar" target="libs/bubblehead-debug.aar" />
+        <resource-file src="libs/bubblehead-release.aar" target="libs/bubblehead-release.aar" />
 
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="BubbleLayout">
                 <param name="android-package" value="cordova.plugin.bubblelayout.BubbleLayout" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
 
-        <config-file parent="/*" target="AndroidManifest.xml">
-            <activity android:label="Bubble Head Activity" android:name="in.dcreators.bubblehead.BubbleHead"/>
-        </config-file>
+        <!-- <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <activity android:label="New Activity" android:name="cordova.plugin.bubblelayout.NewActivity"/>
+        </config-file> -->
 
-        <source-file src="src/android/BubbleLayout.java" target-dir="src/cordova/plugin/bubblelayout/BubbleLayout" />
+        <!-- <source-file src="src/android/NewActivity.java" target-dir="src/cordova/plugin/bubblelayout/BubbleLayout" /> -->
+        <!-- <source-file src="src/android/activity_new.xml" target-dir="res/layout"/> -->
     </platform>
 
 </plugin>

@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.content.Context;
 
 import in.dcreators.bubblehead.BubbleHead;
-import in.dcreators.bubblehead.FloatingViewService;
 
 /**
  * This class echoes a string called from JavaScript.
@@ -41,10 +40,11 @@ public class BubbleLayout extends CordovaPlugin {
 
     private void showBubbleHead(JSONArray args, CallbackContext callbackContext){
         if(args != null){
-            Context context = cordova.getActivity().getApplicationContext();
+            Context context = this.cordova.getActivity().getApplicationContext();
             callbackContext.success("Reach");
             Intent intent = new Intent(context, BubbleHead.class);
-            cordova.getActivity().startActivity(intent);
+            intent.putExtra("Data", "[{'name':'Dev', 'age':19}, {'name':'Devesh', 'age':19}]");
+            this.cordova.getActivity().startActivity(intent);
         }else{
             callbackContext.error("Please pass values");
         }
