@@ -39,12 +39,16 @@ public class BubbleLayout extends CordovaPlugin {
     }
 
     private void showBubbleHead(JSONArray args, CallbackContext callbackContext){
-        if(args != null){
-            Context context = this.cordova.getActivity().getApplicationContext();
-            callbackContext.success("Reach");
-            Intent intent = new Intent(context, BubbleHead.class);
-            intent.putExtra("Data", "[{'name':'Dev', 'age':19}, {'name':'Devesh', 'age':19}]");
-            this.cordova.getActivity().startActivity(intent);
+        if(args != null && args.length() > 0){
+            try {
+                Context context = this.cordova.getActivity().getApplicationContext();
+                callbackContext.success(args);
+                Intent intent = new Intent(context, BubbleHead.class);
+                intent.putExtra("data", args.getJSONObject(0).getString("data"));
+                this.cordova.getActivity().startActivity(intent);
+            } catch (Exception e) {
+                callbackContext.error("Something went wrong" + e);
+            }
         }else{
             callbackContext.error("Please pass values");
         }
@@ -56,7 +60,7 @@ public class BubbleLayout extends CordovaPlugin {
                 int p1 = Integer.parseInt(args.getJSONObject(0).getString("param1"));
                 int p2 = Integer.parseInt(args.getJSONObject(0).getString("param2"));
 
-                callbackContext.success(""+ (p1+p2));
+                callbackContext.success(args + " - " +(p1+p2));
             }catch(Exception e){
                 callbackContext.error("Something went wrong"+ e);
             }
